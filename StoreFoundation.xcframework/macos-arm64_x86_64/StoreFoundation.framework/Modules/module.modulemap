@@ -1,0 +1,6 @@
+framework module StoreFoundation [system] {
+    umbrella header "StoreFoundation.h"
+
+    export *
+    module * { export * }
+}
