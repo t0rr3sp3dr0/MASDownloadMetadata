@@ -10,6 +10,14 @@
 #import "include/MASDownloadMetadata.h"
 
 enum {
+    ISStoreClientTypeAppStore = 0,
+    ISStoreClientTypeBooks = 1,
+    ISStoreClientTypeConfigurator = 2,
+    ISStoreClientTypeSpotlight = 3,
+    ISStoreClientTypeSafari = 4
+};
+
+enum {
     ISTransactionServiceDoNotStartDownload = 1
 };
 
@@ -19,7 +27,7 @@ enum {
     ISServiceProxy *sp = [ISServiceProxy genericSharedProxy];
     id <ISTransactionService> ts = [sp transactionService];
     
-    ISStoreClient *sc = [[ISStoreClient alloc] initWithStoreClientType:0];
+    ISStoreClient *sc = [[ISStoreClient alloc] initWithStoreClientType:ISStoreClientTypeAppStore];
     [ts setStoreClient:sc];
     
     SSPurchase *p = [SSPurchase purchaseWithBuyParameters:buyParameters];
