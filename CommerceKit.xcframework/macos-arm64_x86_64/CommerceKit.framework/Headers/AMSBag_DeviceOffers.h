@@ -12,6 +12,7 @@
 #include "CKStoreClient.h"
 
 @class AMSBagValue; // @import AppleMediaServices;
+
 @protocol AMSDeviceOfferBagContract; // @import AppleMediaServices;
 
 @interface AMSBag_DeviceOffers : NSObject <AMSDeviceOfferBagContract>
