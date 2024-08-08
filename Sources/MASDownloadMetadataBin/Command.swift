@@ -14,16 +14,16 @@ import MASDownloadMetadataLib
 @main
 struct Command: ParsableCommand {
     static var configuration = CommandConfiguration(commandName: "masdownloadmetadata")
-    
+
     @Option(name: .shortAndLong, help: "The salableAdamId")
     var salableAdamId: Int
-    
+
     @Option(name: .shortAndLong, help: "The appExtVrsId")
     var appExtVrsId: Int = 0
-    
+
     @Flag(name: .shortAndLong, help: "Start the application download.")
     var startDownload: Bool = false
-    
+
     mutating func run() throws {
         var components = URLComponents()
         components.queryItems = [
