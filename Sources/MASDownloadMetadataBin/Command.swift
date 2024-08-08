@@ -29,7 +29,7 @@ struct Command: ParsableCommand {
         components.queryItems = [
             URLQueryItem(name: "appExtVrsId", value: String(appExtVrsId)),
             URLQueryItem(name: "price", value: "0"),
-            URLQueryItem(name: "pricingParameters", value: "SWUPD"),
+            URLQueryItem(name: "pricingParameters", value: "STDRDL"),
             URLQueryItem(name: "productType", value: "C"),
             URLQueryItem(name: "salableAdamId", value: String(salableAdamId)),
         ]
