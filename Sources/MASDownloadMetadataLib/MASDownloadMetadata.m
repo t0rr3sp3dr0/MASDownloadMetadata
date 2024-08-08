@@ -23,7 +23,7 @@ enum {
 
 @implementation MASDownloadMetadata
 
-+ (NSDictionary *)performPurchaseWithBuyParameters:(NSString *)buyParameters {
++ (NSDictionary *)performPurchaseWithBuyParameters:(NSString *)buyParameters startDownload:(BOOL)startDownload {
     ISServiceProxy *sp = [ISServiceProxy genericSharedProxy];
     id <ISTransactionService> ts = [sp transactionService];
     
@@ -31,8 +31,13 @@ enum {
     [ts setStoreClient:sc];
     
     SSPurchase *p = [SSPurchase purchaseWithBuyParameters:buyParameters];
+
+    unsigned long long options = kNilOptions;
+    if (!startDownload) {
+        options = ISTransactionServiceDoNotStartDownload;
+    }
     
-    return [self transactionService:ts performPurchase:p withBundleIDsToAdopt:nil legacyAppsToGrant:nil withOptions:ISTransactionServiceDoNotStartDownload];
+    return [self transactionService:ts performPurchase:p withBundleIDsToAdopt:nil legacyAppsToGrant:nil withOptions:options];
 }
 
 + (NSDictionary *)transactionService:(id <ISTransactionService>)service performPurchase:(SSPurchase *)purchase withBundleIDsToAdopt:(NSArray *)adopt legacyAppsToGrant:(NSArray *)grant withOptions:(unsigned long long)options {

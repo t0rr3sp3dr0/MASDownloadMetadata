@@ -21,6 +21,9 @@ struct Command: ParsableCommand {
     @Option(name: .shortAndLong, help: "The appExtVrsId")
     var appExtVrsId: Int = 0
     
+    @Flag(name: .shortAndLong, help: "Start the application download.")
+    var startDownload: Bool = false
+    
     mutating func run() throws {
         var components = URLComponents()
         components.queryItems = [
@@ -33,7 +36,7 @@ struct Command: ParsableCommand {
 
         guard
             let buyParameters = components.query,
-            let downloadMetadata = MASDownloadMetadata.performPurchase(withBuyParameters: buyParameters),
+            let downloadMetadata = MASDownloadMetadata.performPurchase(withBuyParameters: buyParameters, startDownload: startDownload),
             let data = try? PropertyListSerialization.data(fromPropertyList: downloadMetadata, format: .xml, options: .zero),
             let string = String(data: data, encoding: .utf8)
         else {

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MASDownloadMetadata : NSObject
 
-+ (nullable NSDictionary *)performPurchaseWithBuyParameters:(NSString *)buyParameters;
++ (nullable NSDictionary *)performPurchaseWithBuyParameters:(NSString *)buyParameters startDownload:(BOOL)startDownload;
 
 @end
 
