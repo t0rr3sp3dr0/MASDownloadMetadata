@@ -15,10 +15,10 @@ import MASDownloadMetadataLib
 struct Command: ParsableCommand {
     static var configuration = CommandConfiguration(commandName: "masdownloadmetadata")
 
-    @Option(name: .shortAndLong, help: "The salableAdamId")
+    @Option(name: .shortAndLong, help: "The item identifier of the application.")
     var salableAdamId: Int
 
-    @Option(name: .shortAndLong, help: "The appExtVrsId")
+    @Option(name: .shortAndLong, help: "The software version external identifier of the application.")
     var appExtVrsId: Int = 0
 
     @Flag(name: .shortAndLong, help: "Start the application download.")
